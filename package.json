@@ -1,0 +1,24 @@
+{
+  "name": "golden-grids-study-16-actionpark",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Golden Grids layout study 16: Action Park (Vernon, New Jersey, 1978 to 1996) as a theme park's site under the GIFpark brand: a home page, a ride gallery and guest stories as stacked golden grids, with type that scales to its square and openly licensed photographs.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@gifcommit/golden-grids": "^5.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.3.0"
+  }
+}
