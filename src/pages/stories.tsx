@@ -13,9 +13,9 @@ const quote = (q: Quote): Cell => (x, key) => <QuoteTile q={q} x={x} slotKey={ke
 const pic = (k: string, title: string): Cell => (x, key) => <PhotoCard k={k} x={x} slotKey={key} title={title} />;
 
 function App() {
-  cited.add("park"); cited.add("film");
+  cited.add("park");
   return (
-    <Page current={PAGES.stories} source={REFERENCE.film}>
+    <Page current={PAGES.stories} source={REFERENCE.park}>
       <section className="pagehead" aria-labelledby="stories-title">
         <div className="wrap">
           <p className="pagehead__kicker">Guest stories</p>

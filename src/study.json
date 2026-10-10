@@ -2,7 +2,7 @@
   "number": "16",
   "name": "Action Park",
   "brand": "GIFpark",
-  "notice": "A layout study, not Action Park or Mountain Creek: a home page, a ride gallery and a guest stories page written as a theme park's own site, built with Golden Grids as GIFpark, a parody name for Action Park. The real park closed in 1996 after many injuries and at least six deaths; its features here are from Wikipedia, some guest quotations are from the documentary Class Action Park, and nothing can be visited or booked.",
+  "notice": "A layout study, not Action Park or Mountain Creek: a home page, a ride gallery and a guest stories page written as a theme park's own site, built with Golden Grids as GIFpark, a parody name for Action Park. The real park closed in 1996 after many injuries and at least six deaths; its features here are from Wikipedia, and nothing can be visited or booked.",
   "pages": {
     "index": "Home",
     "rides": "Ride gallery",
@@ -11,39 +11,30 @@
   "summary": "Action Park (Vernon Township, New Jersey, 1978 to 1996), under the parody name GIFpark and in the voice of a park promoting itself: a home page, a gallery of twenty-five rides and a page of guest stories, each as stacked golden grids with type scaled to its square.",
   "reviewed": {
     "date": "October 10, 2026",
-    "method": "There is no site to rebuild: the park closed in 1996. The two Wikipedia articles were read in full through Wikipedia's API (revisions 1378502229 and 1376695818), and Reason's review of the film was read for two quotations. The page furniture (season, tickets, directions, a ride gallery, guest stories) is what a theme park's site usually has.",
+    "method": "There is no site to rebuild: the park closed in 1996. Wikipedia's article on the park was read in full through Wikipedia's API (revision 1378502229). The page furniture (season, tickets, directions, a ride gallery, guest stories) is what a theme park's site usually has. A page that carries quotations says in its own credits, below, where each was read.",
     "pages": [
       {
         "label": "Wikipedia, Action Park",
         "url": "https://en.wikipedia.org/wiki/Action_Park"
-      },
-      {
-        "label": "Wikipedia, Class Action Park",
-        "url": "https://en.wikipedia.org/wiki/Class_Action_Park"
-      },
-      {
-        "label": "Reason, review of Class Action Park (August 28, 2020)",
-        "url": "https://reason.com/2020/08/28/review-class-action-park/"
       }
     ]
   },
   "real": [
     "The park. Everything sold as GIFpark on these pages is a feature of Action Park as Wikipedia's article records it: the three areas, the rides, their lengths, speeds, rules and extra charges, the years they opened, the opening-day contests, the season and the park's nicknames.",
     "What the pages leave out, as a park's own site would. Action Park closed after the 1996 season. The article records poorly designed rides, an undertrained staff, many injuries and at least six deaths between 1980 and 1987, and several rides sold here were closed by the state or after an accident (the Cannonball Loop ran for a month; the Kayak Experience never reopened after a death in 1982; the Bailey Ball failed its test).",
-    "From the documentary Class Action Park (2020, directed by Chris Charles Scott and Seth Porges): five short guest and crew quotations and nothing else: three unnamed guests, Alison Becker and Jim DeSaye. Three were taken from Wikipedia's articles and two from Reason's review of the film; none was checked against the film itself.",
-    "Three short quotations from sources the article on the park cites: Chris Gethard (in Weird NJ), Andy Mulvihill and a lifeguard.",
+    "The quotations. Eight short ones appear on the home page and the guest stories page, each marked as a quotation and carrying its speaker. They are real people's words, published elsewhere; the credits of a page that shows one say whose words they are and where they were read. One has been altered to carry the parody name, and the credits of the pages that show it say so.",
     "Seven photographs taken at Action Park by Joe Shlabotnik. Their author does not say which ride each shows, and none is placed as if it showed a named ride."
   ],
   "invented": [
-    "The name. GIFpark is a parody name made for this study and stands for Action Park throughout the copy; the park was never called that. Where a quotation names the park, GIFpark is set in square brackets. The park's nicknames are left as they are.",
+    "The name. GIFpark is a parody name made for this study and stands for Action Park throughout the copy; the park was never called that. In the one quotation that named the park, the name has been replaced with GIFpark. The park's nicknames are left as they are.",
     "The voice. Every sentence outside quotation marks is the study's, written as a park promoting itself in the present tense. The park's own advertising is not quoted or imitated.",
     "The site. Action Park had no site like this one, and nothing here is its design or its mark. GIFpark is not a park, sells no tickets and operates no rides; the story form sends nothing.",
-    "The header's and footer's items (Tickets, Hours, Directions, Groups and the rest), which are a park site's usual ones and lead nowhere, and the lines of context beside each quotation."
+    "The header's and footer's items (Tickets, Hours, Directions, Groups and the rest), which are a park site's usual ones and lead nowhere, and the label and the line of context beside each quotation."
   ],
   "assets": [
     {
       "what": "Text",
-      "source": "The study's own restatement of Wikipedia's articles “Action Park” and “Class Action Park”",
+      "source": "The study's own, selling the features recorded in Wikipedia's article “Action Park”",
       "url": "https://en.wikipedia.org/wiki/Action_Park",
       "licence": "Wikipedia's text is CC BY-SA 4.0; where the study's wording stays close to it, the same licence applies"
     },
@@ -68,7 +59,7 @@
       "licence": "SIL Open Font License"
     }
   ],
-  "owner": "Action Park, Mountain Creek Resort, Great American Recreation, the makers of Class Action Park or the Wikimedia Foundation",
+  "owner": "Action Park, Mountain Creek Resort, Great American Recreation or the Wikimedia Foundation",
   "repo": "https://github.com/gregoryedgerton/golden-grids-study-16-actionpark",
   "updated": "October 10, 2026"
 }

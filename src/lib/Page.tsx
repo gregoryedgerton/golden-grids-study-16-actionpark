@@ -3,7 +3,7 @@ import { Tools } from "./tools";
 import { StudyBanner, StudyDisclosure } from "./study";
 import { Credits } from "./modules";
 import { Icon } from "../icons";
-import { FOOTER, FROM_THE_FILM, LEFT_OUT, NAV, PAGES } from "../content";
+import { FOOTER, LEFT_OUT, NAV, PAGES } from "../content";
 import { useFontsReady } from "./fonts";
 
 /**
@@ -45,7 +45,6 @@ export function Page({ current, source, children }: { current: string; source: {
       <StudyDisclosure>
         <p>{LEFT_OUT}</p>
         <p>The features sold on this page (lengths, speeds, rules, years) are from <a href={source.url}>{source.label}</a>, as the article stood in October 2026. Wikipedia's text is available under the Creative Commons Attribution-ShareAlike 4.0 licence.</p>
-        <p>{FROM_THE_FILM}</p>
         <Credits />
       </StudyDisclosure>
     </>

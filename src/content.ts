@@ -14,16 +14,19 @@ import type { IconName } from "./icons";
  * back: the park closed in 1996, and the article records many injuries and at
  * least six deaths. Nothing on the pages makes light of them.
  *
- * The documentary Class Action Park (2020) is used for guest quotations only
- * (Greg, 2026-10-10), never for a section or a headline, and it is named in
- * the disclosure, not in the copy. Each quotation is short, is marked as one
- * and carries its speaker.
+ * The documentary Class Action Park (2020) is used for quotations only (Greg,
+ * 2026-10-10), never for a section or a headline. It is named only in the
+ * credits of a page that shows one of those quotations: a page with none (the
+ * ride gallery) does not mention the film, and neither does `study.json`,
+ * which every page shows. Each quotation is short, is marked as one and
+ * carries its speaker. Where a quotation named the park, the name is replaced
+ * with GIFpark, without brackets, and that page's credits say the quotation
+ * was altered.
  */
 export const PAGES = { home: "index.html", rides: "rides.html", stories: "stories.html" } as const;
 
 export const REFERENCE = {
   park: { label: "Wikipedia, “Action Park”", url: "https://en.wikipedia.org/wiki/Action_Park" },
-  film: { label: "Wikipedia, “Class Action Park”", url: "https://en.wikipedia.org/wiki/Class_Action_Park" },
 } as const;
 
 /** The header's items, as a park's site has them: the study's pages are links, the rest are for show. */
@@ -134,28 +137,44 @@ export const PARK_PHOTOS = ["ap-river", "ap-chute", "ap-tube", "ap-splash", "ap-
 
 /* ---------- Guest stories ---------- */
 
-/**
- * A short quotation, its speaker, and the study's own line of context. `src`
- * says where the words were published; it is read by the disclosure, never by
- * the copy.
- */
-export interface Quote { id: string; who: string; role: string; quote: string; body: string; tone: Tone; src: "film" | "print" }
-export const GUEST_QUOTES: Quote[] = [
-  { id: "yes", who: "A guest", role: "on what set the park apart", quote: "In a world filled with no, [GIFpark] became the land of yes.", body: "The speaker names the park itself; the brackets mark this page's name for it. Guests chose their own speed, their own fork in the river and their own moment to let go.", tone: "violet", src: "film" },
-  { id: "heaven", who: "A guest", role: "who came as a child", quote: "there were no rules, and for a lot of kids, that was heaven.", body: "She is remembering summers at the park when she was young.", tone: "yellow", src: "film" },
-  { id: "ferris", who: "A guest", role: "on why people came", quote: "who wants to sit on a Ferris wheel?", body: "He is saying what drew people to the park, and it was not the gentle rides.", tone: "teal", src: "film" },
-  { id: "becker", who: "Alison Becker", role: "guest", quote: "I was scared to do those rides", body: "She went on them all the same.", tone: "pink", src: "film" },
-  { id: "gethard", who: "Chris Gethard", role: "guest", quote: "a true rite of passage", body: "He was writing of what the park is to anyone who grew up in New Jersey when he did.", tone: "tile", src: "print" },
-];
-export const CREW_QUOTES: Quote[] = [
-  { id: "desaye", who: "Jim DeSaye", role: "security director", quote: "an 80s movie that was real life", body: "He joined the crew as a teenager and was running park security at 21.", tone: "yellow", src: "film" },
-  { id: "andy", who: "Andy Mulvihill", role: "head lifeguard", quote: "a ride you ride to survive", body: "He was the first to ride the Cannonball Loop, in a full set of ice hockey gear.", tone: "violet", src: "print" },
-  { id: "lifeguard", who: "A lifeguard", role: "at the Tidal Wave Pool", quote: "It was legitimately scary", body: "Twelve lifeguards watch the pool at all times.", tone: "teal", src: "print" },
-];
+/** Where the quotations were read. None was checked against the film itself. */
+export const READ = {
+  park: { label: "Wikipedia, “Action Park”", url: "https://en.wikipedia.org/w/index.php?title=Action_Park&oldid=1378502229" },
+  filmArticle: { label: "Wikipedia, “Class Action Park”", url: "https://en.wikipedia.org/w/index.php?title=Class_Action_Park&oldid=1376695818" },
+  reason: { label: "Reason, August 28, 2020", url: "https://reason.com/2020/08/28/review-class-action-park/" },
+} as const;
 
 /**
- * For the disclosure on every page: what was taken from the documentary, and
- * what the promotional voice leaves out.
+ * A short quotation, its speaker, and the study's own line of context.
+ * `credit` says whose words they are and where they were first published, and
+ * `read` where the study read them; both are drawn in the credits of whichever
+ * page shows the quotation, never in the copy. `film` marks the five from the
+ * documentary. `altered` says what was changed, for the one that was. A
+ * speaker the source does not identify is not called a guest.
  */
-export const FROM_THE_FILM = "From the documentary Class Action Park (2020, directed by Chris Charles Scott and Seth Porges): the quotations of three unnamed guests (“the land of yes”, “that was heaven”, “a Ferris wheel”), of Alison Becker and of Jim DeSaye. They say Action Park; where a quotation names the park, GIFpark stands in square brackets. The first, fourth and fifth were taken from Wikipedia's articles on the park and the film and the other two from Reason's review of the film (August 28, 2020); none was checked against the film itself. The guest who asks about the Ferris wheel is saying, in the review's fuller quotation, that people came to the park because they could get hurt. Nothing else on these pages comes from the film. The quotations of Chris Gethard, Andy Mulvihill and a lifeguard are from sources Wikipedia's article on the park cites (Weird NJ among them).";
+export interface Quote { id: string; who: string; role: string; quote: string; body: string; tone: Tone; film?: boolean; credit: string; read: keyof typeof READ; altered?: string }
+export const GUEST_QUOTES: Quote[] = [
+  { id: "yes", who: "Said of GIFpark", role: "on what set it apart", quote: "In a world filled with no, GIFpark became the land of yes.", body: "Guests chose their own speed, their own fork in the river and their own moment to let go.", tone: "violet", film: true,
+    credit: "An interviewee in the documentary Class Action Park (2020, directed by Chris Charles Scott and Seth Porges). The article does not name the speaker.", read: "park",
+    altered: "The speaker says “Action Park”. This page puts GIFpark in its place." },
+  { id: "heaven", who: "A guest", role: "who came as a child", quote: "there were no rules, and for a lot of kids, that was heaven.", body: "She is remembering summers at the park when she was young.", tone: "yellow", film: true,
+    credit: "A woman interviewed in the documentary Class Action Park (2020), looking back on her youth. The review does not name her.", read: "reason" },
+  { id: "ferris", who: "Said of GIFpark", role: "on why people came", quote: "who wants to sit on a Ferris wheel?", body: "He is saying what drew people to the park, and it was not the gentle rides.", tone: "teal", film: true,
+    credit: "A man interviewed in the documentary Class Action Park (2020). The review does not name him. In its fuller quotation he is saying that people came to the park because they could get hurt.", read: "reason" },
+  { id: "becker", who: "Alison Becker", role: "guest", quote: "I was scared to do those rides", body: "She went on them all the same.", tone: "pink", film: true,
+    credit: "Alison Becker, in the documentary Class Action Park (2020). The words are part of a longer sentence.", read: "filmArticle" },
+  { id: "gethard", who: "Chris Gethard", role: "guest", quote: "a true rite of passage", body: "He was writing of what the park is to anyone who grew up in New Jersey when he did.", tone: "tile",
+    credit: "Chris Gethard, writing in Weird NJ. The words are part of a longer sentence.", read: "park" },
+];
+export const CREW_QUOTES: Quote[] = [
+  { id: "desaye", who: "Jim DeSaye", role: "security director", quote: "an 80s movie that was real life", body: "He joined the crew as a teenager and was running park security at 21.", tone: "yellow", film: true,
+    credit: "Jim DeSaye, in the documentary Class Action Park (2020). The words are part of a longer sentence.", read: "filmArticle" },
+  { id: "andy", who: "Andy Mulvihill", role: "head lifeguard", quote: "a ride you ride to survive", body: "He was the first to ride the Cannonball Loop, in a full set of ice hockey gear.", tone: "violet",
+    credit: "Andy Mulvihill, recalling the Cannonball Loop. The words are part of a longer sentence.", read: "park" },
+  { id: "lifeguard", who: "A lifeguard", role: "at the Tidal Wave Pool", quote: "It was legitimately scary", body: "Twelve lifeguards watch the pool at all times.", tone: "teal",
+    credit: "One of the park's lifeguards, recalling the Tidal Wave Pool.", read: "park" },
+];
+export const QUOTES: Quote[] = [...GUEST_QUOTES, ...CREW_QUOTES];
+
+/** For the disclosure on every page: what the promotional voice leaves out. It does not name the film. */
 export const LEFT_OUT = "GIFpark is this study's name for Action Park, and the promotional voice is the study's own. Action Park closed after the 1996 season. Wikipedia's article records poorly designed rides, an undertrained staff, many injuries and at least six deaths there between 1980 and 1987, and says several of the rides sold on these pages were closed by the state or after an accident. The pages leave that out, as a park's own site would; nothing on them is meant to make light of it.";

@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { seen, photo } from "../photos";
-import { SOURCES, cited, type SourceKey } from "../sources";
-import { AREA_NAME, RIDES, type Area } from "../content";
+import { SOURCES, cited, quoted, type SourceKey } from "../sources";
+import { AREA_NAME, QUOTES, READ, RIDES, type Area } from "../content";
 
 /** Flat modules: bars and lists. They are not grids because their content has no hierarchy to descend. */
 
@@ -59,13 +59,20 @@ export function StoryForm() {
   );
 }
 
-/** Every photograph and every source on the page, for the disclosure. Rendered after the page has drawn. */
+/**
+ * Every photograph, quotation and source on the page, for the disclosure. Rendered after the page has drawn.
+ * The quotations' credits are the only place the documentary is named, so a page that shows none of its
+ * quotations does not mention it. That a page quotes the film, and that a quotation was altered, are said in
+ * plain sight; the list of each quotation's credit is behind a toggle, as the photographs' is.
+ */
 export function Credits() {
   const [keys, setKeys] = useState<string[]>([]);
   const [src, setSrc] = useState<SourceKey[]>([]);
+  const [said, setSaid] = useState<string[]>([]);
   useEffect(() => {
     const read = () => {
-      const k = [...seen], s = [...cited];
+      const k = [...seen], s = [...cited], q = [...quoted];
+      setSaid((old) => (old.join() === q.join() ? old : q));
       setKeys((old) => (old.join() === k.join() ? old : k));
       setSrc((old) => (old.join() === s.join() ? old : s));
     };
@@ -73,8 +80,27 @@ export function Credits() {
     const t = setInterval(read, 1500);
     return () => clearInterval(t);
   }, []);
+  const quotes = QUOTES.filter((q) => said.includes(q.id));
+  const film = quotes.filter((q) => q.film).length;
+  const mark = (t: string) => `“${t}”`;
+  const COUNT = ["None", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"];
   return (
     <>
+      {quotes.length > 0 && (
+        <p>
+          <strong>Quotations.</strong> The {quotes.length === 1 ? "quotation" : `${COUNT[quotes.length].toLowerCase()} quotations`} on this page are real people's words, listed below with whose they are and where each was read.
+          {film > 0 && <> {film === quotes.length ? (film === 1 ? "It is" : "They are") : `${COUNT[film]} of them ${film === 1 ? "is" : "are"}`} from the documentary Class Action Park (2020, directed by Chris Charles Scott and Seth Porges), read in the article or the review named beside each and not checked against the film itself. This study is not affiliated with the film or its makers.</>}
+        </p>
+      )}
+      {quotes.filter((q) => q.altered).map((q) => (
+        <p key={q.id}><strong>A quotation on this page has been altered.</strong> {mark(q.quote)} {q.altered}</p>
+      ))}
+      {quotes.length > 0 && (
+        <details>
+          <summary>Quotations on this page ({quotes.length})</summary>
+          <ul>{quotes.map((q) => <li key={q.id}>{mark(q.quote)} {q.credit} Read in <a href={READ[q.read].url}>{READ[q.read].label}</a>.{q.altered ? ` Altered: ${q.altered}` : ""}</li>)}</ul>
+        </details>
+      )}
       {keys.length > 0 && (
         <details>
           <summary>Photographs on this page ({keys.length})</summary>

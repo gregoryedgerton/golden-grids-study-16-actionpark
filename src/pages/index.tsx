@@ -12,7 +12,7 @@ const ride = (id: string): Cell => { const r = RIDES.find((i) => i.id === id) as
 const year = (y: Year): Cell => (x, key, flat) => flat ? <YearStrip y={y} /> : <YearTile y={y} x={x} slotKey={key} />;
 
 function App() {
-  cited.add("park"); cited.add("film");
+  cited.add("park");
   return (
     <Page current={PAGES.home} source={REFERENCE.park}>
       <h1 className="visually-hidden">GIFpark, Vernon Township, New Jersey: where you control the action</h1>
@@ -24,7 +24,7 @@ function App() {
         cells={["cannonball", "alpine-slide", "wave-pool", "go-karts", "tarzan"].map(ride)} />
       <GridBand id="numbers" title="GIFpark by the numbers" sub="Heights, depths and speeds, from the mountain to the wave pool." variant={3} from={3}
         cells={[fact(FACTS.lifeguards), fact(FACTS.gs), fact(FACTS.waves), fact(FACTS.cliff)]} strip={fact(FACTS.weekend)} />
-      <GridBand id="guests" title="Our guests say" sub="More on the guest stories page." aside={{ href: PAGES.stories, label: "Guest stories" }} variant={5} from={2}
+      <GridBand id="guests" title="What people say" sub="More on the guest stories page." aside={{ href: PAGES.stories, label: "Guest stories" }} variant={5} from={2}
         cells={[(x, key) => <QuoteTile q={GUEST_QUOTES[0]} x={x} slotKey={key} />, (x, key) => <PhotoCard k="ap-chute" x={x} slotKey={key} title="A guest in the flume" />, (x, key) => <QuoteTile q={GUEST_QUOTES[2]} x={x} slotKey={key} />]} strip={fact(FACTS.mph)} />
       <GridBand id="new" title="New this season, every season" sub="Something has opened here almost every summer since 1978." variant={4} from={2} lead
         cells={YEARS.slice(0, 5).map(year)} strip={year(YEARS[6])} />

@@ -168,12 +168,20 @@ README: the smallest line, and that no screen-reader user has tested it.
   about any of them. The notice (`study.json`) and the disclosure
   (`LEFT_OUT` in `content.ts`, drawn by `Page.tsx`) say that the park closed
   in 1996 after many injuries and at least six deaths.
-- CLASS ACTION PARK IS FOR GUEST QUOTATIONS ONLY (Greg, 2026-10-10): never a
+- CLASS ACTION PARK IS FOR QUOTATIONS ONLY (Greg, 2026-10-10): never a
   section, a headline or a fact. Every quotation is under fifteen words, is in
   quotation marks, carries its speaker, and was published somewhere that can be
-  named; `FROM_THE_FILM` in `content.ts` lists them for the disclosure, which
-  is the only place the film is named. Where a quotation says "Action Park",
-  write `[GIFpark]` in square brackets. Never invent a quotation or a guest.
+  named. Each `Quote` in `content.ts` carries its own `credit` and where it was
+  `read`; `QuoteTile` registers it (`quoted` in `sources.ts`) and `Credits`
+  lists the page's quotations in the disclosure. That list is the ONLY place
+  the film is named: a page that shows no quotation from it (the ride gallery)
+  does not mention it, and `study.json`, which every page shows, never names
+  it. Do not call a speaker a guest unless the source says so. Never invent a
+  quotation or a guest.
+- AN ALTERED QUOTATION IS SAID TO BE (Greg, 2026-10-10): where a quotation
+  said "Action Park", write GIFpark, without brackets, and set `altered` on
+  it. The credits of every page that shows it then say so in plain sight (a
+  paragraph, not inside a toggle), and its opened square points there.
 - The seven photographs taken at the park (`real` in `photos.json`, keys
   `ap-*`) are not identified by ride: never set one as a named ride's picture.
   A stand-in's credit says it was not taken at the park. Prefer frames where
@@ -251,8 +259,11 @@ Two geometry rules, verified against source, that every band relies on:
   party's. The real name, whose facts or reporting these are, and anything the
   brand's own site would leave out go in the notice and the disclosure. A
   third-party work about the subject (a documentary, a review) may supply
-  short attributed quotations, never a section, a headline or a fact, and is
-  named in the disclosure, not in the copy. (Greg, 2026-10-10, Study 16.)
+  short attributed quotations, never a section, a headline or a fact. It is
+  named only in the credits of a page that shows one of its quotations; a page
+  that shows none does not mention it. Where a quotation names the real
+  subject, the parody name takes its place, without brackets, and that page's
+  credits say the quotation was altered. (Greg, 2026-10-10, Study 16.)
 - **The header is the reference's header.** Take its structure from the
   page being rebuilt: the parody name where the logo is, its nav items, its
   search, its tabs. Do not write "layout study", a study number or the

@@ -3,6 +3,7 @@ import { Fact as FactBox } from "./boxes";
 import { Fit } from "./fit";
 import { Imprint, Icon, type IconName } from "../icons";
 import { photo, seen } from "../photos";
+import { quoted } from "../sources";
 import { AREA_NAME, PAGES, RIDES, type Area, type Fact, type Quote, type Ride, type Tone, type Year } from "../content";
 export { Icon };
 
@@ -195,22 +196,23 @@ export function WordTile({ label, word, tone, body, icon }: { label: string; wor
   );
 }
 
-/** A short quotation: the words fitted to the square, the speaker above, the source and the rest behind More. */
+/** A short quotation: the words fitted to the square, the speaker above, a line of context behind More. Where it was said is in the page's credits, which learn of it here. */
 export function QuoteTile({ q, x, slotKey }: { q: Quote; x: ExpandGroup; slotKey: string }) {
   const said = `\u201c${q.quote}\u201d`;
+  quoted.add(q.id);
   return (
     <>
       <div className={`box box--${q.tone} box--quote`}>
         <p className="box__label">{q.who}<span className="quote__role">, {q.role}</span></p>
         <div className="box__fit"><Fit as="p" className="fit--quote" min={12} max={110}>{said}</Fit></div>
-        <div className="box__foot"><button className="more" aria-label={`More: ${q.who}`} {...x.triggerProps(slotKey)}>More</button></div>
+        <div className="box__foot"><button className="more" aria-label={`More: ${q.who}, ${q.role}`} {...x.triggerProps(slotKey)}>More</button></div>
       </div>
       {x.isOpen(slotKey) && (
         <ExpandedCell id={x.panelId(slotKey)} title={q.who} onClose={x.close} closeRef={x.closeRef}>
           <div className="cell__prose">
             <blockquote className="pull"><p>{said}</p><footer>{q.who}, {q.role}</footer></blockquote>
             <p>{q.body}</p>
-            <p className="note">Where this was said is given in <a href="#about-this-study">About this study</a>, at the foot of the page.</p>
+            <p className="note">{q.altered ? "One word of this quotation has been changed. What it said, and where" : "Where this was said"} is given in <a href="#about-this-study">About this study</a>, at the foot of the page.</p>
           </div>
         </ExpandedCell>
       )}

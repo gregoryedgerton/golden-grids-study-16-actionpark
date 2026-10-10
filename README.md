@@ -44,7 +44,8 @@ square's side and what a square cannot hold is left out whole.
 tense, and every feature it sells (a length, a speed, a rule, a year) is one the
 article records. What a park's own site would leave out, the disclosure on every
 page puts back: the closure, the injuries, the six deaths. The documentary is
-used for guest quotations only, and is named in the disclosure, not in the copy.
+used for quotations only and is named only in the credits of a page that shows
+one: the ride gallery, which shows none, does not mention it.
 
 ## The pages
 
@@ -58,7 +59,7 @@ Three Vite entries, plain relative links, no router. `GridBand`
 | | Three parks in one | the three areas, each opening to its rides; a figure in the strip |
 | | Start with these | five rides |
 | | By the numbers | four figures and a strip |
-| | Our guests say | two quotations, a photograph, a strip |
+| | What people say | two quotations, a photograph, a strip |
 | | New this season | six years, each opening to what opened |
 | | Also known as | the park's four nicknames |
 | | Plan your visit | three tiles and a photograph of Route 94 |
@@ -78,12 +79,15 @@ in the gallery (`rides.html?open=`).
 
 - **The features are real; the voice is not.** Every sentence outside quotation
   marks is the study's. The park's advertising is not quoted.
-- **GIFpark stands for Action Park** throughout the copy. Where a quotation
-  names the park, GIFpark is in square brackets.
+- **GIFpark stands for Action Park** throughout the copy. The one quotation
+  that named the park now says GIFpark, without brackets, and the credits of
+  the pages that show it say it was altered (Greg, 2026-10-10).
 - **Eight short quotations**, each under fifteen words, marked as a quotation,
   with its speaker: five from the documentary Class Action Park (2020), taken
   from Wikipedia and from Reason's review and not checked against the film;
-  three from sources the article cites.
+  three from sources the article cites. Each carries its own credit, drawn in
+  the disclosure of whichever page shows it. A speaker the source does not
+  name is labelled "Said of GIFpark", not "a guest".
 - **Photographs** are in [`src/photos.json`](src/photos.json), each with its
   author, licence, page and alt text. Seven were taken at Action Park by Joe
   Shlabotnik (Wikimedia Commons, CC BY 2.0); their author does not say which
@@ -106,6 +110,10 @@ has been reviewed.
 - **Nicknames.** The four nicknames are given as the article gives them; they
   came from healthcare workers and people who lived nearby.
 - **Quotations at second hand.** None was checked against the film.
+- **An altered quotation.** In the film the "land of yes" line names Action
+  Park. Here it says GIFpark inside the quotation marks, with no brackets; the
+  page's credits say so in a sentence of their own, and the opened square
+  points to them. Reviewers may want to judge whether that is notice enough.
 - **Card sizes.** In a band of five at 1440 the squares are about 850, 520,
   330, 200 and 200px; the two smallest show a photograph and a yellow label, or
   a ride's name alone.
