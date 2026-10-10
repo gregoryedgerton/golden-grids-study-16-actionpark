@@ -45,7 +45,8 @@ const body = [
 ].join('\n');
 if (dry) { console.log(`${SITE}\n${title}\n\n${body}`); process.exit(0); }
 const gh = (a, input) => execFileSync('gh', a, { encoding: 'utf8', input, stdio: ['pipe', 'pipe', 'inherit'] });
-const open = JSON.parse(gh(['issue', 'list', '--repo', SITE, '--state', 'all', '--limit', '200', '--search', `"Study ${study.number}" in:title`, '--json', 'number,title,url']));
-const dup = open.find((i) => i.title === title);
+// The list, not the search: search lags a new issue by some seconds, and a second run in that time would open a second issue.
+const open = JSON.parse(gh(['issue', 'list', '--repo', SITE, '--state', 'all', '--limit', '500', '--json', 'number,title,url,state']));
+const dup = open.find((i) => i.title === title && i.state === 'OPEN') || open.find((i) => i.title === title);
 if (dup) { console.log(`already on the board: #${dup.number} ${dup.url}`); process.exit(0); }
 console.log(gh(['issue', 'create', '--repo', SITE, '--title', title, '--body-file', '-'], body).trim());
