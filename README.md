@@ -2,7 +2,7 @@ GIFcommit00015
 
 # Layout study — Action Park, as GIFpark
 
-**Live:** [`https://gregoryedgerton.github.io/golden-grids-study-16-actionpark/`](https://gregoryedgerton.github.io/golden-grids-study-16-actionpark/)
+**Live:** [`https://gregoryedgerton.github.io/golden-grids-study-16-gifpark/`](https://gregoryedgerton.github.io/golden-grids-study-16-gifpark/)
 
 An unaffiliated layout study. It sets out Action Park, the amusement and water
 park that stood in Vernon Township, New Jersey, from 1978 to 1996, as a theme
@@ -140,3 +140,5 @@ NODE_PATH=<a node_modules with playwright> node captures/scan.cjs http://localho
 ```
 
 Pushing to `main` deploys to GitHub Pages.
+
+- **Address (2026-10-17, Greg).** The repository moved from `golden-grids-study-16-actionpark` to `golden-grids-study-16-gifpark`, so the reference's name is no longer in the study's web address (a step against the Safe Browsing flag on the shared origin); the old address no longer serves anything.

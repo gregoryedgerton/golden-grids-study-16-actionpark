@@ -15,7 +15,7 @@ filter bar, the story form); `src/content.ts` every word and number;
 `src/sources.ts` and `src/photos.json` the provenance. Read
 `docs/program/PROGRAM.md`, then `STUDY-BRIEF.md`, then `README.md`.
 
-Live at https://gregoryedgerton.github.io/golden-grids-study-16-actionpark/;
+Live at https://gregoryedgerton.github.io/golden-grids-study-16-gifpark/;
 pushing to `main` deploys.
 
 ## Rules that are not negotiable
@@ -346,3 +346,5 @@ opened in StackBlitz at `https://stackblitz.com/~/github.com/gregoryedgerton/gol
 - Do not append `?file=` to the `~/github.com` link; it made the IDE fail to
   start in testing. The classic `/github/` importer accepts `?file=` but waits
   on a WebSocket and can stall at "Cloning repo from GitHub".
+
+- **Address (2026-10-17, Greg).** The repository moved from `golden-grids-study-16-actionpark` to `golden-grids-study-16-gifpark`, so the reference's name is no longer in the study's web address (a step against the Safe Browsing flag on the shared origin); the old address no longer serves anything.
